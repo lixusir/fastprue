@@ -1,0 +1,71 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="alert alert-danger-light">
+        <i class="fa fa-warning"></i> {:__('该功能可以一键生成插件接口文档，需要遵循规范')}<a href="https://doc.fastadmin.net/doc/163.html#toc-3" target="_blank">点击查看</a></div>
+    <div class="form-group">
+        <label for="c-language" class="control-label col-xs-12 col-sm-2">{:__('语言')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-language"  class="form-control " name="row[language]" type="text" value="{:isset($row['language'])?$row['language']:'zh-cn'}">
+
+        </div>
+        <span class="help-block" >{:__('默认中文')}</span>
+    </div>
+    <div class="form-group">
+        <label for="c-force" class="control-label col-xs-12 col-sm-2">{:__('是否覆盖')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-force" data-rule="required" class="form-control selectpicker" name="row[force]">
+                <option value="true" >{:__('Yes')}</option>
+                <option value="false" >{:__('No')}</option>
+            </select>
+        </div>
+        <span class="help-block" ></span>
+    </div>
+    <div class="form-group">
+        <label for="c-output" class="control-label col-xs-12 col-sm-2">{:__('文档名称')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title"  class="form-control " name="row[title]" type="text" value="{:isset($row['title'])?$row['title']:123456 }">
+
+        </div>
+        <span class="help-block" ></span>
+    </div>
+
+    <div class="form-group">
+        <label for="c-output" class="control-label col-xs-12 col-sm-2">{:__('文档名')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-output"  class="form-control " name="row[output]" type="text" value="{:isset($row['name'])?$row['name']:123456 }.html">
+
+        </div>
+        <span class="help-block" >英文,.html不能删除</span>
+    </div>
+
+
+    <div class="form-group">
+        <label for="c-apiurl" class="control-label col-xs-12 col-sm-2">{:__('接口连接')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-apiurl"  class="form-control " name="row[apiurl]" type="text" value="">
+
+        </div>
+        <span class="help-block" >可留空</span>
+    </div>
+    <div class="form-group">
+        <label for="c-controller" class="control-label col-xs-12 col-sm-2">{:__('源码路径')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-controller"  class="form-control " name="row[controller]" type="text" value="{$row['controller_dir']}">
+            <span class="help-block alert-danger-light">
+                1、如果生成报错，请检查路径是否有误。<br/>
+                2、默认是生成插件文档，请检查插件目录下的“controller”是否有对应的文件。<br/>
+                3、生成的页面会放在{$row.app_path}{php}public/document/你命名的文档<br/>
+                3、可以自己定义其它路径噢]<br/>
+                示例1：{$row.app_path}{php}echo "application".DS."api".DS."controller".DS.""{/php}
+            </span>
+        </div>
+
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
